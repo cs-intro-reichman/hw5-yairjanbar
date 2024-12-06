@@ -67,7 +67,7 @@ public class Scrabble {
 			sum = sum + SCRABBLE_LETTER_VALUES[c - 97];
 		}
 		sum = sum*l;
-		if (sum == HAND_SIZE) {
+		if (l == HAND_SIZE) {
 			sum = sum +50;
 		}
 		if (MyString.subsetOf("runi", word)) {
