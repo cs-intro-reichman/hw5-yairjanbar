@@ -80,9 +80,10 @@ public class Scrabble {
 	// into it, at random indexes, the letters 'a' and 'e'
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
-		String s1String = MyString.randomStringOfLetters(HAND_SIZE-8);
+		int l= HAND_SIZE - 2;
+		String s1String = MyString.randomStringOfLetters(l);
 		String s2String = MyString.insertRandomly('a', s1String);
-		String s3String = MyString.insertRandomly('z', s2String);
+		String s3String = MyString.insertRandomly('e', s2String);
 		return s3String;
 	}
 	
