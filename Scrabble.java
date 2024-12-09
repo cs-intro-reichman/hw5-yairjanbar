@@ -110,16 +110,16 @@ public class Scrabble {
 			if (input.equals(".")) {
 				break;
 			}
-			else {
-				if (isWordInDictionary(input)&&MyString.subsetOf(input, newHand)) {
-					score += wordScore(input);
-					newHand = MyString.remove(input, newHand);
-				}
-				else {
-					System.out.println("Invalid word");
-				}
+			else if (!MyString.subsetOf(input, newHand)) {
+				System.out.println("Invalid word");
 			}
-			
+			else if (isWordInDictionary(input)) {
+					score += wordScore(input);
+					System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points\n");
+					newHand = MyString.remove(newHand, input);
+			} else {
+                System.out.println("No such word in the dictionary. Try again.");
+			}
 		}
 		if (newHand.length() == 0) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points");
@@ -142,8 +142,10 @@ public class Scrabble {
 			// Gets the user's input, which is all the characters entered by 
 			// the user until the user enter the ENTER character.
 			String input = in.readString();
-			if (input.equals('n')) {
+			if (input.equals("n")) {
 				playHand(createHand());
+			} else if (input.equals("e")) {
+				System.out.println("End the game");
 			}
 			else break;
 		}
@@ -155,7 +157,7 @@ public class Scrabble {
 		////testScrabbleScore();    
 		////testCreateHands();  
 		////testPlayHands();
-		////playHand(createHand());
+		playHand("train");
 		////playGame();
 	}
 
